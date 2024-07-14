@@ -19,8 +19,8 @@ public class NumberSchema extends BaseSchema {
     public NumberSchema positive() {
         Predicate<Object> positive = new Predicate<Object>() {
             @Override
-            public boolean test(Object p) {
-                return p == null || (int) p > 0;
+            public boolean test(Object number) {
+                return number == null || (int) number > 0;
             }
         };
         addCheck("positive", positive);
