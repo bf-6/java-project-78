@@ -4,7 +4,7 @@ import java.util.function.Predicate;
 
 public class NumberSchema extends BaseSchema {
 
-    public void required() {
+    public NumberSchema required() {
         Predicate<Object> required = new Predicate<Object>() {
             @Override
             public boolean test(Object number) {
@@ -13,7 +13,7 @@ public class NumberSchema extends BaseSchema {
         };
 
         addCheck("required", required);
-
+        return this;
     }
 
     public NumberSchema positive() {

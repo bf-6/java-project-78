@@ -3,7 +3,7 @@ package hexlet.code.schemas;
 import java.util.function.Predicate;
 
 public class StringSchema extends BaseSchema {
-    public void required() {
+    public StringSchema required() {
         Predicate<Object> required = new Predicate<Object>() {
             @Override
             public boolean test(Object str) {
@@ -12,6 +12,7 @@ public class StringSchema extends BaseSchema {
         };
 
         addCheck("required", required);
+        return this;
 
     }
 

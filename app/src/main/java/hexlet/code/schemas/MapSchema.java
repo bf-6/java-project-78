@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 
 public class MapSchema extends BaseSchema {
 
-    public void required() {
+    public MapSchema required() {
         Predicate<Object> required = new Predicate<Object>() {
             @Override
             public boolean test(Object map) {
@@ -14,6 +14,7 @@ public class MapSchema extends BaseSchema {
         };
 
         addCheck("required", required);
+        return this;
 
     }
 
@@ -25,6 +26,23 @@ public class MapSchema extends BaseSchema {
             }
         };
         addCheck("sizeof", sizeof);
+        return this;
+    }
+
+    public MapSchema shape(Map<String, BaseSchema<Object>> schemas) {
+        addCheck(
+                "shape",
+                value -> {
+                    boolean isValid = true;
+                    Map<String, BaseSchema> objectMap = (Map<String, BaseSchema>) value;
+                    for (Map.Entry entry : objectMap.entrySet()) {
+                        if (!schemas.get(entry.getKey()).isValid(entry.getValue())) {
+                            isValid = false;
+                        }
+                    }
+                    return isValid;
+                }
+        );
         return this;
     }
 
