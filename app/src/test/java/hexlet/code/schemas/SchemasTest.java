@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -18,6 +19,7 @@ public class SchemasTest {
 
         StringSchema schema = v.string();
 
+        assertThat(schema.isValid("")).isTrue();
         assertTrue(schema.isValid(""));
         assertTrue(schema.isValid(null));
 
