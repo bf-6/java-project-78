@@ -12,9 +12,6 @@ install:
 run-dist:
 	make -C run-dist
 
-run:
-	make -C app run
-
 test:
 	make -C app test
 

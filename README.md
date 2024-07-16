@@ -61,5 +61,3 @@ make lint
 ## Run jacoco report:
 ``` sh
 make report
-```
-## Project demonstration:
