@@ -4,6 +4,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/1ac520f43170cc054759/maintainability)](https://codeclimate.com/github/bf-6/java-project-78/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/1ac520f43170cc054759/test_coverage)](https://codeclimate.com/github/bf-6/java-project-78/test_coverage)
 ## About:
+A data validator is a library with which you can check the correctness of any data. There are many similar libraries in every language, since almost all programs work with external data that needs to be checked for correctness. First of all, we are talking about the data of the forms filled in by users. The yup library is used as the basis for the project.
 
 
 ## Usage example:
