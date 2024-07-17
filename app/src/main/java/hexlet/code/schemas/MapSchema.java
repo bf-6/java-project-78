@@ -3,7 +3,7 @@ package hexlet.code.schemas;
 import java.util.Map;
 import java.util.function.Predicate;
 
-public class MapSchema extends BaseSchema {
+public class MapSchema extends BaseSchema<Map> {
 
     public MapSchema required() {
         Predicate<Object> required = new Predicate<Object>() {
