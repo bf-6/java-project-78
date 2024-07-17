@@ -29,7 +29,7 @@ public class MapSchema extends BaseSchema {
         return this;
     }
 
-    public MapSchema shape(Map<String, BaseSchema<String>> schemaMap) {
+    public MapSchema shape(Map<String, BaseSchema> schemaMap) {
         Predicate<Object> p = (s) -> schemaMap.entrySet()
                 .stream()
                 .allMatch(entry -> entry.getValue().isValid(((Map<?, ?>) s).get(entry.getKey())));
