@@ -29,20 +29,22 @@ public class MapSchema extends BaseSchema {
         return this;
     }
 
-    public MapSchema shape(Map<String, BaseSchema<Object>> schemas) {
-        addCheck(
-                "shape",
-                value -> {
-                    boolean isValid = true;
-                    Map<String, BaseSchema> objectMap = (Map<String, BaseSchema>) value;
-                    for (Map.Entry entry : objectMap.entrySet()) {
-                        if (!schemas.get(entry.getKey()).isValid(entry.getValue())) {
-                            isValid = false;
-                        }
+    public MapSchema shape(Map<String, BaseSchema<Object>> schemasMap) {
+
+        Predicate<Object> shape = new Predicate<Object>() {
+            @Override
+            public boolean test(Object o) {
+                Map<String, BaseSchema> objectMap = (Map<String, BaseSchema>) o;
+                for (Map.Entry map : objectMap.entrySet()) {
+                    if (!schemasMap.get(map.getKey()).isValid(map.getValue())) {
+                        return false;
                     }
-                    return isValid;
                 }
-        );
+                return true;
+            }
+        };
+
+        addCheck("shape", shape);
         return this;
     }
 
