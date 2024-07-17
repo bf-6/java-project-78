@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.LinkedHashMap;
 import java.util.function.Predicate;
 
-public abstract class BaseSchema<S> {
+public abstract class BaseSchema {
 
     protected Map<String, Predicate<Object>> checks = new LinkedHashMap<>();
     protected boolean required = false;
