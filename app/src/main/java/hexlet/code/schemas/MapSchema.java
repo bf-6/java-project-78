@@ -3,7 +3,7 @@ package hexlet.code.schemas;
 import java.util.Map;
 import java.util.function.Predicate;
 
-public class MapSchema extends BaseSchema {
+public final class MapSchema extends BaseSchema {
 
     public MapSchema required() {
         Predicate<Object> required = new Predicate<Object>() {
@@ -30,11 +30,11 @@ public class MapSchema extends BaseSchema {
     }
 
     public MapSchema shape(Map<String, BaseSchema> schemaMap) {
-        Predicate<Object> p = (s) -> schemaMap.entrySet()
+        Predicate<Object> shape = m -> schemaMap.entrySet()
                 .stream()
-                .allMatch(entry -> entry.getValue().isValid(((Map<?, ?>) s).get(entry.getKey())));
+                .allMatch(entry -> entry.getValue().isValid(((Map<?, ?>) m).get(entry.getKey())));
 
-        addCheck("shape", p);
+        addCheck("shape", shape);
         return this;
     }
 
