@@ -3,7 +3,7 @@ package hexlet.code.schemas;
 import java.util.Map;
 import java.util.function.Predicate;
 
-public final class NumberSchema extends BaseSchema<Map<?, ?>>{
+public final class NumberSchema extends BaseSchema<Map<?, ?>> {
 
     public NumberSchema required() {
         Predicate<Object> required = number -> number != null;
