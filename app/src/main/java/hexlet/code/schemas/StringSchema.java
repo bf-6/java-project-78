@@ -2,7 +2,7 @@ package hexlet.code.schemas;
 
 import java.util.function.Predicate;
 
-public final class StringSchema extends BaseSchema<String> {
+public class StringSchema extends BaseSchema<String> {
     public StringSchema required() {
         Predicate<Object> required = str -> !str.equals("");
         addCheck("required", required);
