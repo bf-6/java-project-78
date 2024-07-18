@@ -2,38 +2,25 @@ package hexlet.code.schemas;
 
 import java.util.function.Predicate;
 
-public final class NumberSchema extends BaseSchema {
+public final class NumberSchema extends BaseSchema<Integer> {
 
     public NumberSchema required() {
-        Predicate<Object> required = new Predicate<Object>() {
-            @Override
-            public boolean test(Object number) {
-                return number != null;
-            }
-        };
-
+        Predicate<Object> required = number -> number != null;
         addCheck("required", required);
+
         return this;
     }
 
     public NumberSchema positive() {
-        Predicate<Object> positive = new Predicate<Object>() {
-            @Override
-            public boolean test(Object number) {
-                return number == null || (int) number > 0;
-            }
-        };
+        Predicate<Object> positive = number -> number == null || (int) number > 0;
         addCheck("positive", positive);
+
         return this;
     }
 
     public NumberSchema range(int min, int max) {
-        Predicate<Object> range = new Predicate<Object>() {
-            @Override
-            public boolean test(Object number) {
-                return (int) number >= min && (int) number <= max;
-            }
-        };
+        Predicate<Object> range = number -> (int) number >= min && (int) number <= max;
+
         addCheck("range", range);
         return this;
     }
