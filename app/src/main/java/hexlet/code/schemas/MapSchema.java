@@ -6,21 +6,21 @@ import java.util.function.Predicate;
 public final class MapSchema extends BaseSchema<Map<?, ?>> {
 
     public MapSchema required() {
-        Predicate<Object> required = map -> map != null;
+        Predicate<Map<?, ?>> required = map -> map != null;
 
         addCheck("required", required);
         return this;
     }
 
     public MapSchema sizeof(int size) {
-        Predicate<Object> sizeof = map -> ((Map<?, ?>) map).size() == size;
+        Predicate<Map<?, ?>> sizeof = map -> ((Map<?, ?>) map).size() == size;
 
         addCheck("sizeof", sizeof);
         return this;
     }
 
-    public MapSchema shape(Map<String, ? extends BaseSchema<?>> schemaMap) {
-        Predicate<Object> shape = map -> schemaMap.entrySet()
+    public MapSchema shape(Map<String, ? extends BaseSchema> schemaMap) {
+        Predicate<Map<?, ?>> shape = map -> schemaMap.entrySet()
                 .stream()
                 .allMatch(entry -> entry.getValue().isValid(((Map<?, ?>) map).get(entry.getKey())));
 

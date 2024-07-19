@@ -6,20 +6,20 @@ import java.util.function.Predicate;
 
 public abstract class BaseSchema<T> {
 
-    protected Map<String, Predicate<Object>> checks = new LinkedHashMap<>();
+    protected Map<String, Predicate<T>> checks = new LinkedHashMap<>();
     protected boolean required = false;
 
-    protected final void addCheck(String name, Predicate<Object> validate) {
+    protected final void addCheck(String name, Predicate<T> validate) {
         checks.put(name, validate);
     }
 
-    public final boolean isValid(Object ourData) {
+    public final boolean isValid(T ourData) {
 
         if (ourData == null && checks.containsKey("required")) {
             return required;
         }
 
-        for (Map.Entry<String, Predicate<Object>> check : checks.entrySet()) {
+        for (Map.Entry<String, Predicate<T>> check : checks.entrySet()) {
             if (!check.getValue().test(ourData)) {
                 return false;
             }
